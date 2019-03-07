@@ -1,0 +1,15 @@
+Ubuntu 18.04 (Use third party)
+1) Update the system (if not updated you might face issues while trying to install a new program). Can do it by:
+   Software Updater (app)
+   $ sudo apt-get update && sudo apt-get upgrade
+2) Install basic software:
+   sudo apt-get install build-essential cmake git vim
+   sudo apt-get install openjdk-11-jdk
+3) Install basic applications
+   chromium
+   pycharm
+   eclipse
+   sublime
+4) Install basic compilers
+   anaconda3
+   
