@@ -1,15 +1,72 @@
 Ubuntu 18.04 (Use third party)
+
 1) Update the system (if not updated you might face issues while trying to install a new program). Can do it by:
    Software Updater (app)
-   $ sudo apt-get update && sudo apt-get upgrade
-2) Install basic software:
-   sudo apt-get install build-essential cmake git vim
-   sudo apt-get install openjdk-11-jdk
-3) Install basic applications
-   chromium
+   $ sudo apt-get update
+   $ sudo apt-get upgrade
+   
+2) Basic packages:
+   $ sudo apt-get install build-essential cmake git vim openjdk-11-jdk
+   
+3) Basic programs:
+   chrome
    pycharm
    eclipse
    sublime
-4) Install basic compilers
    anaconda3
+   
+4) CUDA
+   First install graphic card driver (Nvidia GeoForce Rtx 2080 ti)
+   (.run installers from nvidia driver download webpage do not work, use Nvidia driver PPA homepage instead)
+   $ sudo apt-get purge nvidia*
+   $ sudo add-apt-repository ppa:graphics-drivers
+   $ sudo apt-get update
+   (find the supported version for your graphic card, can use nvidia driver download webpage to find out - using version 418)
+   (https://www.nvidia.com/Download/index.aspx)
+   $ sudo apt-get install nvidia-418
+   reboot
+   (test installation)
+   $ nvidia-settings
+   $ nvidia-smi
+   (if everything is correct, graphic card is recognized, continue with cuda)
+   
+   *https://medium.com/@avinchintha/how-to-install-nvidia-drivers-and-cuda-10-0-for-rtx-2080-ti-gpu-on-ubuntu-16-04-18-04-ce32e4edf1c0 (did not work for me)
+   *https://devtalk.nvidia.com/default/topic/1032882/nvidia-settings-error-unable-to-load-info-from-any-available-system/?offset=17 (worked for me, comment 20)
+   
+   Install CUDA toolkit
+   (download debian cuda-toolkit installer from nvidia CUDA download webpage - using version 10.1)
+   (https://developer.nvidia.com/cuda-downloads)
+   $ sudo dpkg -i cuda-repo-ubuntu1804-10-1-local-10.1.105-418.39_1.0-1_amd64.deb
+   $ sudo apt-key add var/cuda/repos/cuda-repo-10-1-local-10.1.105-418.39/7fa2af80.pub
+   $ sudo apt-get update
+   $ sudo apt-get install cuda
+   reboot
+   (set up variables)
+   $ export PATH=/usr/local/cuda-10.1/bin${PATH:+:${PATH}}
+   $ export LD_LIBRARY_PATH=/usr/local/cuda-10.1/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+   (install writable copy of cuda samples)
+   $ cuda-install-samples-10.1.sh ~
+   $ cd ~/NVIDIA_CUDA-10.1_Samples/
+   $ make
+   (test installation)
+   $ cd ~/NVIDIA_CUDA-10.1_Samples/5_Simulations/nbody
+   $ ./nbody
+   $ cd ~/NVIDIA_CUDA-10.1_Samples/1_Utilities/deviceQuery
+   $ ./deviceQuery
+   
+   *https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#package-manager-installation
+   *https://docs.nvidia.com/cuda/cuda-quick-start-guide/index.html#ubuntu-x86_64-deb
+   
+5) Tensorflow for GPU
+   (conda makes it easy, needs graphic card driver first)
+   $ conda create --name GPU
+   $ activate GPU
+   $ conda install tensorflow-gpu
+   (test)
+   $ python3
+   >>> import tensorflow as tf
+   >>> sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))
+   
+   *https://towardsdatascience.com/tensorflow-gpu-installation-made-easy-use-conda-instead-of-pip-52e5249374bc
+   
    
