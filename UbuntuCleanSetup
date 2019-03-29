@@ -19,11 +19,11 @@ Ubuntu 18.04 (Use third party)
    First install graphic card driver (Nvidia GeoForce Rtx 2080 ti)
    (.run installers from nvidia driver download webpage do not work, use Nvidia driver PPA homepage instead)
    $ sudo apt-get purge nvidia*
-   $ sudo add-apt-repository ppa:graphics-drivers
+   $ sudo add-apt-repository ppa:graphics-drivers/ppa
    $ sudo apt-get update
    (find the supported version for your graphic card, can use nvidia driver download webpage to find out - using version 418)
    (https://www.nvidia.com/Download/index.aspx)
-   $ sudo apt-get install nvidia-418
+   $ sudo apt-get install nvidia-driver-418
    reboot
    (test installation)
    $ nvidia-settings
@@ -37,7 +37,7 @@ Ubuntu 18.04 (Use third party)
    (download debian cuda-toolkit installer from nvidia CUDA download webpage - using version 10.1)
    (https://developer.nvidia.com/cuda-downloads)
    $ sudo dpkg -i cuda-repo-ubuntu1804-10-1-local-10.1.105-418.39_1.0-1_amd64.deb
-   $ sudo apt-key add var/cuda/repos/cuda-repo-10-1-local-10.1.105-418.39/7fa2af80.pub
+   $ sudo apt-key add /var/cuda-repo-10-1-local-10.1.105-418.39/7fa2af80.pub
    $ sudo apt-get update
    $ sudo apt-get install cuda
    reboot
