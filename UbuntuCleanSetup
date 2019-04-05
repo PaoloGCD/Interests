@@ -68,5 +68,13 @@ Ubuntu 18.04 (Use third party)
    >>> sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))
    
    *https://towardsdatascience.com/tensorflow-gpu-installation-made-easy-use-conda-instead-of-pip-52e5249374bc
+
+6) Basic utilities
+   CPU temperature
+   * https://itsfoss.com/check-laptop-cpu-temperature-ubuntu/
+   DOCK (Mac style)
+   * http://ubuntuhandbook.org/index.php/2018/05/replace-left-panel-dock-launcher-ubuntu-18-04/
+   Horizontal workspaces
+   * https://askubuntu.com/questions/1040075/can-i-have-rectangular-grid-workspace-in-ubuntu-18-04
    
    
